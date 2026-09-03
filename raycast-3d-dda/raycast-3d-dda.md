@@ -1,6 +1,6 @@
 ---
 id: raycast-3d-dda
-title: 그리드 큐브맵 Raycast에 3D DDA 도입 — 전체 순회 대비 98.7% 단축
+title: 그리드 큐브맵 Raycast에 3D DDA 도입
 summary: 그리드 기반 큐브맵의 Raycast에 3D DDA(Voxel Traversal)를 도입해, 전체 셀 순회 대비 평균 실행 시간을 14.9μs에서 0.2μs로 줄임 (98.7% 감소)
 project: CopyMaple2 (메이플스토리2 모작)
 role: 클라이언트/엔진 프로그래머 (개인 프로젝트, 1인 개발)

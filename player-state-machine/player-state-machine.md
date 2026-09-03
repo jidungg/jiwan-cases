@@ -1,6 +1,6 @@
 ---
 id: player-state-machine
-title: 플레이어 상태 머신 — 상태 클래스 36개와 그 대가
+title: 플레이어 상태 머신
 summary: 플레이어의 상태를 클래스 단위로 분리해 상태 머신으로 관리한 구조. 팀원이 구조를 건드리지 않고 상태를 추가할 만큼 확장은 쉬웠지만, 개발 후반 상태 클래스가 36개까지 늘면서 생긴 네 가지 문제를 개발 중에 문서로 정리했습니다
 project: Project_DX11_PluckySquire (견습 기사 모험기 모작)
 role: 클라이언트 프로그래머 (7인 팀 프로젝트, 애니메이션·플레이어 담당)
@@ -120,14 +120,15 @@ m_vClamberStartPosition = m_vClamberEndPosition
   직접 정하기 때문에 상태끼리 서로를 알게 되고, 전체 전이 흐름을 한눈에 보기가
   어렵습니다. Idle 하나만 봐도 여섯 개 상태로 나가는 조건이 이 안에 들어 있습니다.
 
-  ```cpp
-  if (tKeyResult.bInputStates[PLAYER_INPUT_ATTACK])        m_pOwner->Set_State(CPlayer::ATTACK);
-  else if (tKeyResult.bInputStates[PLAYER_INPUT_SPINATTACK]) m_pOwner->Set_State(CPlayer::SPINATTACK);
-  else if (tKeyResult.bInputStates[PLAYER_INPUT_JUMP])       m_pOwner->Set_State(CPlayer::JUMP_UP);
-  else if (tKeyResult.bInputStates[PLAYER_INPUT_ROLL])       m_pOwner->Set_State(CPlayer::ROLL);
-  else if (tKeyResult.bInputStates[PLAYER_INPUT_THROWSWORD]) m_pOwner->Set_State(CPlayer::THROWSWORD);
-  else if (tKeyResult.bInputStates[PLAYER_INPUT_MOVE])       m_pOwner->Set_State(CPlayer::RUN);
-  ```
+```cpp
+//상태 클래스 내에서 다른 상태로 분기하는 코드
+if (tKeyResult.bInputStates[PLAYER_INPUT_ATTACK])        m_pOwner->Set_State(CPlayer::ATTACK);
+else if (tKeyResult.bInputStates[PLAYER_INPUT_SPINATTACK]) m_pOwner->Set_State(CPlayer::SPINATTACK);
+else if (tKeyResult.bInputStates[PLAYER_INPUT_JUMP])       m_pOwner->Set_State(CPlayer::JUMP_UP);
+else if (tKeyResult.bInputStates[PLAYER_INPUT_ROLL])       m_pOwner->Set_State(CPlayer::ROLL);
+else if (tKeyResult.bInputStates[PLAYER_INPUT_THROWSWORD]) m_pOwner->Set_State(CPlayer::THROWSWORD);
+else if (tKeyResult.bInputStates[PLAYER_INPUT_MOVE])       m_pOwner->Set_State(CPlayer::RUN);
+```
 
 - **단점 — 상태 클래스가 너무 많아졌습니다.** 개발 기간이 지나며 상태 클래스가
   36개까지 늘었고, 일부는 중복된 구현을 갖게 됐습니다. 점프 하나에 `JumpUp`·
