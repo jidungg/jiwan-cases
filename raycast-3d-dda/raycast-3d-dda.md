@@ -24,7 +24,7 @@ CopyMaple2(메이플스토리2 모작, DirectX11 자체 엔진, 개인 프로젝
 시 벽 판정(몸통·발 각각)과 몬스터 길찾기에서 매 프레임 반복 호출되는 핵심
 경로였습니다.
 
-![플레이어 캐릭터의 충돌 검사 관련 CPU 사용량 측정 결과](../Assets/raycast-3d-dda_cpu-usage.png)
+![플레이어 캐릭터의 충돌 검사 관련 CPU 사용량 측정 결과](raycast-3d-dda_cpu-usage.png)
 
 문제를 어렵게 만든 조건은 이렇습니다. 그리드 맵이라 임의의 3D 좌표를 셀 인덱스로
 바로 변환할 수는 있었지만, Ray가 시작점에서 목표까지 **어떤 순서로 셀을
@@ -38,7 +38,7 @@ CopyMaple2(메이플스토리2 모작, DirectX11 자체 엔진, 개인 프로젝
 이동하는 데 드는 비용(TDelta)"과 "다음 경계면까지 남은 거리(TMax)"를 미리
 계산해두고, 매 스텝마다 TMax가 가장 작은 축으로만 한 칸씩 전진하는 방식입니다.
 
-![3D DDA 알고리즘 개념도](../Assets/raycast-3d-dda_algorithm-diagram.png)
+![3D DDA 알고리즘 개념도](raycast-3d-dda_algorithm-diagram.png)
 
 `CTerrain::RayCast`의 전진 로직입니다. 세 축 중 가장 먼저 경계에 닿는 축을 골라
 그쪽으로 한 칸 가고, 그 축의 TMax를 다음 경계까지 갱신합니다.

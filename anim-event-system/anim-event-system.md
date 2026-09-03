@@ -57,7 +57,7 @@ sources:
 툴에서 찍고 → 파일로 굽고 → 런타임이 읽어 발동하는, 세 단계 파이프라인으로
 만들었습니다.
 
-![애니메이션 이벤트 관련 클래스 다이어그램](../Assets/anim-event-system_class-diagram.png)
+![애니메이션 이벤트 관련 클래스 다이어그램](anim-event-system_class-diagram.png)
 
 이벤트 하나는 **어떤 애니메이션의 / 어느 진행도에서 / 어떤 이름을 부를지** 세 가지만
 갖습니다. `CAnimEventGenerator`는 컴포넌트로 만들어 이벤트 목록을 들고 매 프레임
@@ -115,7 +115,7 @@ void CAnimEventGenerator::Update(_float fTimeDelta)
 지점에서 `Add AnimEvent`를 누르면 그 순간의 진행도가 그대로 이벤트가 되고, 목록에서
 골라 애니메이션 인덱스·진행도·함수 이름을 고쳐 파일로 내보냅니다.
 
-![애니메이션 툴의 이벤트 편집 패널](../Assets/anim-event-system_tool-panel.png)
+![애니메이션 툴의 이벤트 편집 패널](anim-event-system_tool-panel.png)
 
 ### 애니메이션 이벤트 조건 체크
 
@@ -149,7 +149,7 @@ void CAnimEventGenerator::Update(_float fTimeDelta)
 공유했습니다.  
 `.animevt` 준비 → 프로토타입 등록 → `IAnimEventReceiver` 상속 후 문자열 키에 함수 바인딩 → Generator 생성 시 Receiver와 SenderModel 넘기기까지 4단계로 구성돼있으며,  `std::bind`가 처음인 팀원을 위한 설명도 같이 넣었습니다.
 
-![팀에 공유한 애니메이션 이벤트 가이드 캡처](../Assets/anim-event-system_guide.png)
+![팀에 공유한 애니메이션 이벤트 가이드 캡처](anim-event-system_guide.png)
 
 가이드 전문 링크: [애니메이션 이벤트 가이드](https://silicon-humor-0e8.notion.site/184c1ed420d180a4949df8dfb7f0e4e0)
 

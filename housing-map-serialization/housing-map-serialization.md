@@ -35,9 +35,9 @@ sources:
 셀로 나눠 관리하고, 행 크기가 X·열 크기가 Z일 때 `(x, z, y)`번째 셀의 인덱스는
 `x + X * z + X * Z * y`입니다. 3차원 좌표가 정수 하나로 접히니 "어디에 뭘
 놓았는가"를 인덱스 하나로 적을 수 있습니다.
-![하우징으로 집을 꾸미기 전](../Assets/housing-map-serialization_before.png)
+![하우징으로 집을 꾸미기 전](housing-map-serialization_before.png)
 
-![하우징으로 집을 꾸민 후](../Assets/housing-map-serialization_after.png)
+![하우징으로 집을 꾸민 후](housing-map-serialization_after.png)
 
 ### 어려웠던 점
 
@@ -68,7 +68,7 @@ Builder는 자식 오브젝트로 새 모델과 `CBuildPreview`(설치될 블록
 Raycast로 맞은 셀을 찾아 그 한 칸 위로 Builder를 순간이동시킵니다 — 멀리 있는
 곳까지 날아가지 않아도 되게 하는 장치입니다.
 
-![Builder와 설치 미리보기 — 방향 화살표가 블록의 4방 회전을 나타냅니다](../Assets/housing-map-serialization_builder-preview.png)
+![Builder와 설치 미리보기 — 방향 화살표가 블록의 4방 회전을 나타냅니다](housing-map-serialization_builder-preview.png)
 
 설치 가능 여부는 `CTerrain::Is_Buildable()` 하나로 판정합니다. 맵 범위 안인가,
 인덱스가 유효한가, **그 셀이 비어 있는가** 세 가지입니다. 충돌 검사는 쓰지
@@ -145,7 +145,7 @@ else
 따로 적었습니다.
 
 남은 문제는 **아이콘**입니다. 
-![건설 메뉴 — 로딩 때 생성된 아이콘으로 자재를 고릅니다](../Assets/housing-map-serialization_build-menu.png)
+![건설 메뉴 — 로딩 때 생성된 아이콘으로 자재를 고릅니다](housing-map-serialization_build-menu.png)
 489종을 손으로 그릴 수도 없었고, 원작에서 아이콘
 리소스를 구하지도 못했습니다. 그래서 **로딩 때 각 모델을 지정 위치에서 촬영해 아이콘을 만듭니다.** 300×300 렌더 타겟 하나를 잡아두고 뷰·투영 행렬을
 고정한 뒤, 건설 아이템을 전부 순회하며 모델을 그리고, 결과 텍스처를 복사해

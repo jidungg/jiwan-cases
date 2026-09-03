@@ -108,7 +108,7 @@ void ARTChessPlayerState::OnRep_Energy()
 
 지금까지의 흐름을 서버와 클라이언트로 나눠 그리면 아래와 같습니다.
 
-![기력 동기화 시퀀스. 평시에는 회복분을 복제하지 않고 클라이언트가 서버 시각 델타로 계산하고, 소비할 때만 ForceNetUpdate로 즉시 동기화한 뒤 승인 시퀀스로 로컬 예측값을 정산합니다](../Assets/energy-client-prediction_sequence.svg)
+![기력 동기화 시퀀스. 평시에는 회복분을 복제하지 않고 클라이언트가 서버 시각 델타로 계산하고, 소비할 때만 ForceNetUpdate로 즉시 동기화한 뒤 승인 시퀀스로 로컬 예측값을 정산합니다](energy-client-prediction_sequence.svg)
 
 ## 장단점
 

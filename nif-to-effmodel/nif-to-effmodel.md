@@ -117,7 +117,7 @@ void MakeControllerList(NifModel* nifModel)
   쓰는 기능을 게임 쪽에 붙이는 것도 마찬가지로 어려웠습니다. **결국 모든 기능을 갖추지
   못한 채 프로젝트가 끝났습니다.** 아래는 NifSkope에서 AlpahProperty의 플래그를 캡처한 이미지입니다.   
 
-  ![NifSkope의 AlpahProperty 옵션 플래그](../Assets/nif-to-effmodel_bit-flags.png)
+  ![NifSkope의 AlpahProperty 옵션 플래그](nif-to-effmodel_bit-flags.png)
 
 - **단점 — 파일을 여는 것만으로 파일이 생깁니다.** 제가 쓰는 데는 불편하지는 않았지만,
   다른 사람이 쓰기엔 불친절합니다. 시간이 촉박해 로드 시점 즉시 변환하는 방식으로 구현했습니다.

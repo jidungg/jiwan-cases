@@ -44,7 +44,7 @@ sources:
 상속받아 `Enter()` / `Update()` / `Exit()` / `On_AnimEnd()`를 오버라이드하는 것으로
 자기 동작을 구현합니다. 각 상태에서 다른 상태로의 전환을 책임집니다.
 
-![플레이어 상태 관련 클래스 다이어그램](../Assets/player-state-machine_class-diagram.png)
+![플레이어 상태 관련 클래스 다이어그램](player-state-machine_class-diagram.png)
 
 상태 전이는 `Transition_To()` 하나를 지납니다. 이전 상태의 `Exit()`를 부르고
 해제한 뒤, 새 상태를 물리고 `Enter()`를 부릅니다. 이 순서가 한곳에 있어서
