@@ -12,4 +12,4 @@
 | nif-to-effmodel | 오픈 소스 프로그램 분석해서 nif → .effmodel 익스포터 심기 | CopyMaple2 (메이플스토리2 모작) | 툴, 에셋 파이프라인 | 오픈소스 코드 분석, 바이너리 직렬화, 에셋 파이프라인, 툴 제작, Qt |
 | player-state-machine | 플레이어 상태 머신 | Project_DX11_PluckySquire (견습 기사 모험기 모작) | 설계, 게임플레이 | 상태 패턴, 객체지향 설계, 리팩토링, 게임플레이 구현 |
 | raycast-3d-dda | 그리드 큐브맵 Raycast에 3D DDA 도입 | CopyMaple2 (메이플스토리2 모작) | 최적화 | 알고리즘, 프로파일링, 충돌 검사, 자료구조 |
-| single-world-region-teleport | 익스트랙션 삽입·추출의 서버·레벨 구조 | Dogong (팀 프로젝트, Untitled-Forge) | 네트워크, 설계 | 서버 권위 설계, 레벨 스트리밍, 넷 렐러번시, 리플리케이션, 언리얼 네트워크, 설계 문서화 |
+| single-world-region-teleport | 익스트랙션 진입·추출의 서버·레벨 구조 | Dogong (팀 프로젝트, Untitled-Forge) | 네트워크, 설계 | 서버 권위 설계, 레벨 스트리밍, 넷 렐러번시, 리플리케이션, 언리얼 네트워크, 설계 문서화 |
