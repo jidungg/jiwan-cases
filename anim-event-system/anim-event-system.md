@@ -227,3 +227,17 @@ enum은 컴파일러가 오타를 잡아주지만, **툴이 게임에 어떤 이
 
 - **콜백에 인자를 넘길 수 있게 하는 것도, 지금 생각해 보면 그때 넣어뒀어도 괜찮았을 것
 같습니다.** 당시에는 인자 이름이 명시적이지 않은 게 걸려서 접었던 부분입니다.
+
+## 첨부 코드
+
+`src/`에 구현 파일 사본을 두었습니다. 2026-10-12 로컬 작업 트리에서 사례 관련 부분만
+발췌했습니다. 디버그 출력과 미사용 코드를 지우고 서식·상수·널 체크도 정리했습니다.
+팀 저장소에서 본인이 작성한 파일만 동봉했습니다.
+
+- [AnimEventGenerator.h](https://github.com/jidungg/jiwan-cases/blob/main/anim-event-system/src/AnimEventGenerator.h) — `CAnimEventGenerator` 선언
+- [AnimEventGenerator.cpp](https://github.com/jidungg/jiwan-cases/blob/main/anim-event-system/src/AnimEventGenerator.cpp) — 이벤트 파일 읽기, 진행도 비교와 콜백 호출 구현
+- [AnimEventReceiver.h](https://github.com/jidungg/jiwan-cases/blob/main/anim-event-system/src/AnimEventReceiver.h) — `IAnimEventReceiver` 인터페이스 (헤더 전용)
+- [Animation.h](https://github.com/jidungg/jiwan-cases/blob/main/anim-event-system/src/Animation.h) — `CAnimation` 선언
+- [Animation.cpp](https://github.com/jidungg/jiwan-cases/blob/main/anim-event-system/src/Animation.cpp) — `CAnimation::Reset` 구현
+- [Level_AnimTool.h](https://github.com/jidungg/jiwan-cases/blob/main/anim-event-system/src/Level_AnimTool.h) — `CLevel_AnimTool` 선언
+- [Level_AnimTool.cpp](https://github.com/jidungg/jiwan-cases/blob/main/anim-event-system/src/Level_AnimTool.cpp) — `Update_AnimEventImgui`·`Load_AnimEvents`·`Export_AnimEvents` 구현

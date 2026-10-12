@@ -53,7 +53,7 @@ if (fTMaxX < fTMaxY && fTMaxX < fTMaxZ)
 }
 else if (fTMaxZ < fTMaxY)
 {
-    iZ += fStepZ;
+    iZ += iStepZ;
     fT = fTMaxZ;
     fTMaxZ += fTDeltaZ;
 }
@@ -101,3 +101,11 @@ else
 | 실측 평균 | 14.9μs | 0.2μs |
 
 **전체 셀 순회 대비 약 98.7% 단축**됐습니다.
+
+## 첨부 코드
+
+`src/`에 구현 파일 사본을 두었습니다. CopyMaple2 커밋 61a4c3f에서 사례 관련 부분만
+발췌했습니다. 디버그 출력과 미사용 코드를 지우고 서식·상수·널 체크도 정리했습니다.
+
+- [Terrain.h](https://github.com/jidungg/jiwan-cases/blob/main/raycast-3d-dda/src/Terrain.h) — `CTerrain` 선언
+- [Terrain.cpp](https://github.com/jidungg/jiwan-cases/blob/main/raycast-3d-dda/src/Terrain.cpp) — `CTerrain::RayCast` 구현

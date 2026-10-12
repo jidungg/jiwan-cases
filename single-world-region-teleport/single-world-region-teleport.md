@@ -235,3 +235,22 @@ B(단일 데디 + 기지 로컬)를 버린 이유는 조금 다릅니다. 이것
 기록에 4.1이 근거로 삼은 요구가 무엇인지를 적어뒀기 때문에, 새 요구가 들어왔을 때 그
 근거가 아직 유효한지만 확인하면 됐습니다. 세 안을 처음부터 다시 비교할 필요가
 없었습니다.
+
+## 첨부 코드
+
+`src/`에 구현 파일 사본을 두었습니다. 2026-10-12 로컬 작업 트리에서 사례 관련 부분만
+발췌했습니다. 디버그 출력과 미사용 코드를 지우고 서식·상수·널 체크도 정리했습니다.
+팀 저장소에서 본인이 작성한 파일만 동봉했습니다.
+
+- [DogongTeleportComponent.h](https://github.com/jidungg/jiwan-cases/blob/main/single-world-region-teleport/src/DogongTeleportComponent.h) — `UDogongTeleportComponent` 선언
+- [DogongTeleportComponent.cpp](https://github.com/jidungg/jiwan-cases/blob/main/single-world-region-teleport/src/DogongTeleportComponent.cpp) — `UDogongTeleportComponent` 구현
+- [DogongRegionStreamingSubsystem.h](https://github.com/jidungg/jiwan-cases/blob/main/single-world-region-teleport/src/DogongRegionStreamingSubsystem.h) — `UDogongRegionStreamingSubsystem` 선언
+- [DogongRegionStreamingSubsystem.cpp](https://github.com/jidungg/jiwan-cases/blob/main/single-world-region-teleport/src/DogongRegionStreamingSubsystem.cpp) — `UDogongRegionStreamingSubsystem` 구현
+- [DogongRegionRelevancy.h](https://github.com/jidungg/jiwan-cases/blob/main/single-world-region-teleport/src/DogongRegionRelevancy.h) — `DogongRegion::ShouldCullByRegion` 선언
+- [DogongRegionRelevancy.cpp](https://github.com/jidungg/jiwan-cases/blob/main/single-world-region-teleport/src/DogongRegionRelevancy.cpp) — `DogongRegion::ShouldCullByRegion` 구현
+- [DogongBaseCampInstance.h](https://github.com/jidungg/jiwan-cases/blob/main/single-world-region-teleport/src/DogongBaseCampInstance.h) — `ADogongBaseCampInstance` 선언
+- [DogongBaseCampInstance.cpp](https://github.com/jidungg/jiwan-cases/blob/main/single-world-region-teleport/src/DogongBaseCampInstance.cpp) — `ADogongBaseCampInstance` 구현
+- [DogongRunGameMode.h](https://github.com/jidungg/jiwan-cases/blob/main/single-world-region-teleport/src/DogongRunGameMode.h) — `ADogongRunGameMode` 선언
+- [DogongRunGameMode.cpp](https://github.com/jidungg/jiwan-cases/blob/main/single-world-region-teleport/src/DogongRunGameMode.cpp) — `PostLogin`의 기지 슬롯 배정과 `Logout`의 슬롯 반납 구현. 원본 파일에는 팀원 커밋 2건이 섞여 있고, 발췌한 두 함수는 본인 작성입니다
+
+`ShouldCullByRegion` 호출부는 팀원이 작성한 `Character/DogongCharacterBase.cpp`에 있으며 동봉하지 않았습니다.
