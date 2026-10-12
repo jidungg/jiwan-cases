@@ -32,6 +32,10 @@ private:
 	_float m_fItemWidth = 50;
 	_uint m_iVisibleRowCount = 2;
 	_uint m_iVisibleColCount = 10;
+
+	_float4 m_vButtonBorder = { 2, 2, 2, 2 };
+	_float4 m_vItemBackPanelBorder = { 4, 4, 4, 4 };
+	_uint m_iItemEntryPoolSize = 200;
 };
 
 END

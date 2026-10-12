@@ -8,12 +8,6 @@
 #include "NPCSpanwer.h"
 #include "PortalTerrainObject.h"
 
-namespace
-{
-	constexpr _float fTerrainObjRotationPerSec = 5.f;
-	constexpr _float fTerrainObjSpeedPerSec = 1.f;
-}
-
 HRESULT CTerrain::Load_From_Json(string strJsonFilePath)
 {
 	CItemDataBase* pDB = ITEMDB;
@@ -32,8 +26,8 @@ HRESULT CTerrain::Load_From_Json(string strJsonFilePath)
 			return E_FAIL;
 
 		CTerrainObject::TERRAINOBJ_DESC desc;
-		desc.fRotationPerSec = fTerrainObjRotationPerSec;
-		desc.fSpeedPerSec = fTerrainObjSpeedPerSec;
+		desc.fRotationPerSec = m_fTerrainObjRotationPerSec;
+		desc.fSpeedPerSec = m_fTerrainObjSpeedPerSec;
 		lstrcpyW(desc.szModelProtoName, pBuildItemDesc->strModelTag);
 		desc.eModelProtoLevelID = LEVEL_LOADING;
 		desc.iID = eId;

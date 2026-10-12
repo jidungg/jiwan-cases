@@ -7,7 +7,6 @@
 
 IMPLEMENT_SINGLETON(CItemDataBase)
 constexpr int DEFAULT_PASS = 1;
-constexpr _uint ICON_SIZE = 300;
 
 HRESULT CItemDataBase::Initialize(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 {
@@ -19,7 +18,7 @@ HRESULT CItemDataBase::Initialize(ID3D11Device* pDevice, ID3D11DeviceContext* pC
 	}
 
 	m_vClearColor = _float4(0.f, 0.f, 0.f, 0.f);
-	m_pRenderTarget = CRenderTarget::Create(m_pDevice, m_pContext, ICON_SIZE, ICON_SIZE, DXGI_FORMAT_R8G8B8A8_UNORM, m_vClearColor);
+	m_pRenderTarget = CRenderTarget::Create(m_pDevice, m_pContext, m_iIconSize, m_iIconSize, DXGI_FORMAT_R8G8B8A8_UNORM, m_vClearColor);
 	if (nullptr == m_pRenderTarget)
 		return E_FAIL;
 
@@ -53,8 +52,8 @@ HRESULT CItemDataBase::Initialize(ID3D11Device* pDevice, ID3D11DeviceContext* pC
 	D3D11_VIEWPORT viewport = {};
 	viewport.TopLeftX = 0.0f;
 	viewport.TopLeftY = 0.0f;
-	viewport.Width = (_float)ICON_SIZE;
-	viewport.Height = (_float)ICON_SIZE;
+	viewport.Width = (_float)m_iIconSize;
+	viewport.Height = (_float)m_iIconSize;
 	viewport.MinDepth = 0.0f;
 	viewport.MaxDepth = 1.0f;
 	pContext->RSSetViewports(1, &viewport);

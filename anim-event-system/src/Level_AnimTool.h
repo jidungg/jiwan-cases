@@ -23,6 +23,8 @@ private:
 
 	map<_uint, vector<ANIM_EVENT>> m_AnimEvents;
 	_int m_iSelectedAnimEventIndex = -1;
+
+	static constexpr _uint m_iFuncNameBufferSize = 128;
 };
 
 END

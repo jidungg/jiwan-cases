@@ -4,13 +4,6 @@
 #include "UIButton.h"
 #include "UIScroller.h"
 
-namespace
-{
-	const _float4 vButtonBorder = { 2, 2, 2, 2 };
-	const _float4 vItemBackPanelBorder = { 4, 4, 4, 4 };
-	constexpr _uint iItemEntryPoolSize = 200;
-}
-
 HRESULT CUIHomeDialog::Initialize(void* pArg)
 {
 	HOMEDIALOG_DESC* pDesc = static_cast<HOMEDIALOG_DESC*>(pArg);
@@ -41,7 +34,7 @@ HRESULT CUIHomeDialog::Ready_Childs(HOMEDIALOG_DESC* pDesc)
 	ButtonDesc.fYOffset = (m_fHeaderHeight - m_fCommonButtonSize) / 2;
 	ButtonDesc.fSizeX = m_fCommonButtonSize;
 	ButtonDesc.fSizeY = m_fCommonButtonSize;
-	ButtonDesc.vBorder = vButtonBorder;
+	ButtonDesc.vBorder = m_vButtonBorder;
 	ButtonDesc.pTextureCom = static_cast<CTexture*>(m_pGameInstance->Clone_Prototype(PROTOTYPE::PROTO_COMPONENT, LEVEL_HOME, TEXT("UI_Texture_Magnifier"), nullptr));
 	if (nullptr == ButtonDesc.pTextureCom)
 		return E_FAIL;
@@ -62,7 +55,7 @@ HRESULT CUIHomeDialog::Ready_Childs(HOMEDIALOG_DESC* pDesc)
 	tItemBackPanelDesc.fSizeX = fSize.x - m_fCommonMargin*2;
 	tItemBackPanelDesc.fSizeY = fSize.y - m_fHeaderHeight - m_fCommonMargin ;
 	tItemBackPanelDesc.pTextureCom = static_cast<CTexture*>(m_pGameInstance->Clone_Prototype(PROTOTYPE::PROTO_COMPONENT, LEVEL_LOADING, TEXT("UI_Texture_ItemListBack"), nullptr));
-	tItemBackPanelDesc.vBorder = vItemBackPanelBorder;
+	tItemBackPanelDesc.vBorder = m_vItemBackPanelBorder;
 	m_pItemBackPanel = static_cast<CUIPanel*>(m_pGameInstance->Clone_Prototype(PROTOTYPE::PROTO_GAMEOBJ, LEVEL_LOADING, CUIPanel::m_szProtoTag, &tItemBackPanelDesc));
 	if (nullptr == m_pItemBackPanel)
 		return E_FAIL;
@@ -85,7 +78,7 @@ HRESULT CUIHomeDialog::Ready_Childs(HOMEDIALOG_DESC* pDesc)
 	ListDesc.szHighlighterTexProtoTag = TEXT("UI_Texture_HighlightBorder");
 	ListDesc.eItemEntryProtoLev = LEVEL_HOME;
 	ListDesc.szItemEntryProtoTag = TEXT("Prototype_GameObject_HomeDialogBuildItemIndicator");
-	ListDesc.iObjectPoolSize = iItemEntryPoolSize;
+	ListDesc.iObjectPoolSize = m_iItemEntryPoolSize;
 	m_pItemList = static_cast<CUIListSelector*>(m_pGameInstance->Clone_Prototype(PROTOTYPE::PROTO_GAMEOBJ, LEVEL_LOADING, TEXT("Prototype_GameObject_UIList"), &ListDesc));
 	if (nullptr == m_pItemList)
 		return E_FAIL;

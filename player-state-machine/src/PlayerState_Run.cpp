@@ -3,15 +3,6 @@
 #include "GameInstance.h"
 #include "Player.h"
 
-namespace
-{
-	constexpr _float fFallingUpForceThreshold = -0.01f;
-	constexpr _float fSneakSpeedRatio = 0.5f;
-	constexpr _float fFootstepSfxInterval = 0.3f;
-	constexpr _int iFootstepSfxCount = 20;
-	constexpr _float fFootstepSfxVolume = 20.f;
-}
-
 void CPlayerState_Run::Update(_float _fTimeDelta)
 {
 	_float fUpForce = m_pOwner->Get_UpForce();
@@ -21,7 +12,7 @@ void CPlayerState_Run::Update(_float _fTimeDelta)
 	{
 		_float fUpForce = m_pOwner->Get_UpForce();
 		_bool bOnGround = m_pOwner->Is_OnGround();
-		if (false == bOnGround && fFallingUpForceThreshold > fUpForce)
+		if (false == bOnGround && m_fFallingUpForceThreshold > fUpForce)
 		{
 			m_pOwner->Set_State(CPlayer::JUMP_DOWN);
 			return;
@@ -57,18 +48,18 @@ void CPlayerState_Run::Update(_float _fTimeDelta)
 					Switch_RunAnimation3D(bSneak);
 					m_bSneakBefore = bSneak;
 				}
-				fMoveSpeed = bSneak ? fMoveSpeed * fSneakSpeedRatio : fMoveSpeed;
+				fMoveSpeed = bSneak ? fMoveSpeed * m_fSneakSpeedRatio : fMoveSpeed;
 			}
 			m_pOwner->Move(XMVector3Normalize(tKeyResult.vMoveDir) * fMoveSpeed, _fTimeDelta);
 
 			// 걷는 사운드 재생
 			m_fAccSoundDelay += _fTimeDelta;
-			if (fFootstepSfxInterval <= m_fAccSoundDelay)
+			if (m_fFootstepSfxInterval <= m_fAccSoundDelay)
 			{
 				if (false == bSneak)
-					m_pGameInstance->Start_SFX(_wstring(L"A_sfx_footsteps_generic-") + to_wstring(rand() % iFootstepSfxCount), fFootstepSfxVolume);
+					m_pGameInstance->Start_SFX(_wstring(L"A_sfx_footsteps_generic-") + to_wstring(rand() % m_iFootstepSfxCount), m_fFootstepSfxVolume);
 				else
-					m_pGameInstance->Start_SFX(_wstring(L"A_sfx_footsteps_sneak-") + to_wstring(rand() % iFootstepSfxCount), fFootstepSfxVolume);
+					m_pGameInstance->Start_SFX(_wstring(L"A_sfx_footsteps_sneak-") + to_wstring(rand() % m_iFootstepSfxCount), m_fFootstepSfxVolume);
 
 				m_fAccSoundDelay = 0.f;
 			}
@@ -115,7 +106,7 @@ void CPlayerState_Run::Enter()
 		Switch_RunAnimation3D(tKeyResult.bInputStates[PLAYER_INPUT_SNEAK]);
 	}
 
-	m_pGameInstance->Start_SFX(_wstring(L"A_sfx_footsteps_generic-") + to_wstring(rand() % iFootstepSfxCount), fFootstepSfxVolume);
+	m_pGameInstance->Start_SFX(_wstring(L"A_sfx_footsteps_generic-") + to_wstring(rand() % m_iFootstepSfxCount), m_fFootstepSfxVolume);
 }
 
 void CPlayerState_Run::Exit()

@@ -41,5 +41,7 @@ private:
 
 	FVector CachedCursorLocation;
 	FVector CachedMouseHitLocation;
+
+	float ClickMaxDragDistance = 100.f;
 };
 

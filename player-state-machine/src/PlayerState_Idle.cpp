@@ -4,11 +4,6 @@
 #include "Player.h"
 #include "Interactable.h"
 
-namespace
-{
-	constexpr _double dFallingUpForceThreshold = -0.001;
-}
-
 void CPlayerState_Idle::Update(_float _fTimeDelta)
 {
 
@@ -18,7 +13,7 @@ void CPlayerState_Idle::Update(_float _fTimeDelta)
 	{
 		_float fUpForce = m_pOwner->Get_UpForce();
 		_bool bOnGround = m_pOwner->Is_OnGround();
-		if (false == bOnGround && dFallingUpForceThreshold > fUpForce)
+		if (false == bOnGround && m_dFallingUpForceThreshold > fUpForce)
 		{
 			m_pOwner->Set_State(CPlayer::JUMP_DOWN);
 			return;

@@ -38,6 +38,9 @@ private:
 	XMUINT3 m_vSize = { 1, 1, 1 };
 
 	vector<CTerrainObject*> m_vecCubes;
+
+	_float m_fTerrainObjRotationPerSec = 5.f;
+	_float m_fTerrainObjSpeedPerSec = 1.f;
 };
 
 END

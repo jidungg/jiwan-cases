@@ -36,6 +36,8 @@ private:
 	_float4 m_vClearColor = {};
 	CShader* m_pShader = { nullptr };
 	_float4x4 m_WorldMatrix{}, m_ViewMatrix{}, m_ProjMatrix{};
+
+	_uint m_iIconSize = 300;
 };
 #define ITEMDB CItemDataBase::GetInstance()
 END

@@ -16,6 +16,8 @@ private:
 private:
     _bool m_bSneakBefore = false;
     _bool m_bPlatformerMode = false;
+
+    _double m_dFallingUpForceThreshold = -0.001;
 };
 
 END

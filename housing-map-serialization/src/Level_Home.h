@@ -30,6 +30,11 @@ private:
 	bool m_bBuildMode = false;
 
 	CUIHomeDialog* m_pHomeDialog = { nullptr };
+
+	_float m_fBuilderRotationPerSec = 10.f;
+	_float m_fBuilderSpeedPerSec = 4.f;
+	static constexpr char m_szMyHomeJsonPath[] = "../Bin/Resources/Json/MyHome.json";
+	_float4 m_vHomeDialogBorder = { 3, 3, 3, 3 };
 };
 
 END

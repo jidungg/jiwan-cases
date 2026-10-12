@@ -11,14 +11,6 @@
 #include "TerrainObject.h"
 #include "ItemDataBase.h"
 
-namespace
-{
-	constexpr _float fBuilderRotationPerSec = 10.f;
-	constexpr _float fBuilderSpeedPerSec = 4.f;
-	constexpr char szMyHomeJsonPath[] = "../Bin/Resources/Json/MyHome.json";
-	const _float4 vHomeDialogBorder = { 3, 3, 3, 3 };
-}
-
 HRESULT CLevel_Home::Initialize(void* pArg)
 {
 	__super::Initialize(pArg);
@@ -30,8 +22,8 @@ HRESULT CLevel_Home::Initialize(void* pArg)
 
 	//BUILDER
 	CBuilder::BUILDER_DESC BuilderDesc{};
-	BuilderDesc.fRotationPerSec = fBuilderRotationPerSec;
-	BuilderDesc.fSpeedPerSec = fBuilderSpeedPerSec;
+	BuilderDesc.fRotationPerSec = m_fBuilderRotationPerSec;
+	BuilderDesc.fSpeedPerSec = m_fBuilderSpeedPerSec;
 	BuilderDesc.pCubeTerrain = m_pCubeTerrain;
 	m_pBuilder = static_cast<CBuilder*>(m_pGameInstance->Clone_Prototype(PROTOTYPE::PROTO_GAMEOBJ, LEVEL_HOME, CBuilder::m_szProtoTag, &BuilderDesc));
 	if (nullptr == m_pBuilder)
@@ -110,7 +102,7 @@ void CLevel_Home::Update(_float fTimeDelta)
 		//맵 저장
 		if (m_pGameInstance->GetKeyState(KEY::H) == KEY_STATE::DOWN)
 		{
-			m_pCubeTerrain->Save_To_Json(szMyHomeJsonPath);
+			m_pCubeTerrain->Save_To_Json(m_szMyHomeJsonPath);
 		}
 	}
 }
@@ -136,7 +128,7 @@ HRESULT CLevel_Home::Ready_Layer_UI(LAYERID eLayerId)
 	homDialogDesc.ePivotType = CORNOR_TYPE::RIGHT_BOT;
 	homDialogDesc.fXOffset = 0;
 	homDialogDesc.fYOffset = 0;
-	homDialogDesc.vBorder = vHomeDialogBorder;
+	homDialogDesc.vBorder = m_vHomeDialogBorder;
 	homDialogDesc.pTextureCom = static_cast<CTexture*>(m_pGameInstance->Clone_Prototype(PROTOTYPE::PROTO_COMPONENT, m_iLevelID, TEXT("UI_Texture_HomeDialog"), nullptr));
 	list<const ITEM_DATA*> listData;
 	for (auto& i : *m_pItemData)

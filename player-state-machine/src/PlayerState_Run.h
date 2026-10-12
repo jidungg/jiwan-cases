@@ -20,6 +20,12 @@ private:
     _bool m_bPlatformerMode = false;
     F_DIRECTION m_eOldFDir = F_DIRECTION::F_DIR_LAST;
     _float m_fAccSoundDelay = 0.f;
+
+    _float m_fFallingUpForceThreshold = -0.01f;
+    _float m_fSneakSpeedRatio = 0.5f;
+    _float m_fFootstepSfxInterval = 0.3f;
+    _int m_iFootstepSfxCount = 20;
+    _float m_fFootstepSfxVolume = 20.f;
 };
 
 END

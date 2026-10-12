@@ -3,11 +3,6 @@
 #include "GameInstance.h"
 #include "TestModelObject.h"
 
-namespace
-{
-	constexpr _uint iFuncNameBufferSize = 128;
-}
-
 void CLevel_AnimTool::Update_AnimEventImgui()
 {
 
@@ -123,9 +118,9 @@ void CLevel_AnimTool::Update_AnimEventImgui()
 				tEvent->fProgress = fProgress;
 			}
 
-			char buffer[iFuncNameBufferSize] = "";
+			char buffer[m_iFuncNameBufferSize] = "";
 			strcpy_s(buffer, tEvent->strFuncName.c_str());
-			if (ImGui::InputText("FunctionName", buffer, iFuncNameBufferSize)) {
+			if (ImGui::InputText("FunctionName", buffer, m_iFuncNameBufferSize)) {
 				tEvent->strFuncName = buffer;
 			}
 		}

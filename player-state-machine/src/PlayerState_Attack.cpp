@@ -3,18 +3,6 @@
 #include "GameInstance.h"
 #include "Player.h"
 
-namespace
-{
-    constexpr _float fAttackSfxDelay = 0.15f;
-    constexpr _float fVocalSfxVolume = 25.f;
-    constexpr _float fSwordSfxVolume = 40.f;
-    constexpr _int iSmallEffortsSfxCount = 5;
-    constexpr _int iSwordSwingSfxCount = 5;
-    constexpr _int iSwordStrike2SfxCount = 6;
-    constexpr _int iSwordStrike3SfxCount = 6;
-    constexpr _int iFinalBlowSfxCount = 16;
-}
-
 void CPlayerState_Attack::Update(_float _fTimeDelta)
 {
     m_pOwner->Stop_Rotate();
@@ -208,18 +196,18 @@ void CPlayerState_Attack::Switch_To_AttackAnimation(_uint _iComboCount)
 
     if (0 == m_iComboCount)
     {
-        m_pGameInstance->Start_SFX_Delay(_wstring(L"A_sfx_small_efforts-") + to_wstring(rand() % iSmallEffortsSfxCount), fAttackSfxDelay, fVocalSfxVolume);
-        m_pGameInstance->Start_SFX_Delay(_wstring(L"A_sfx_sword_swing-") + to_wstring(rand() % iSwordSwingSfxCount), fAttackSfxDelay, fSwordSfxVolume);
+        m_pGameInstance->Start_SFX_Delay(_wstring(L"A_sfx_small_efforts-") + to_wstring(rand() % m_iSmallEffortsSfxCount), m_fAttackSfxDelay, m_fVocalSfxVolume);
+        m_pGameInstance->Start_SFX_Delay(_wstring(L"A_sfx_sword_swing-") + to_wstring(rand() % m_iSwordSwingSfxCount), m_fAttackSfxDelay, m_fSwordSfxVolume);
     }
     else if (1 == m_iComboCount)
     {
-        m_pGameInstance->Start_SFX_Delay(_wstring(L"A_sfx_small_efforts-") + to_wstring(rand() % iSmallEffortsSfxCount), fAttackSfxDelay, fVocalSfxVolume);
-        m_pGameInstance->Start_SFX_Delay(_wstring(L"A_sfx_sword_strike2-") + to_wstring(rand() % iSwordStrike2SfxCount), fAttackSfxDelay, fSwordSfxVolume);
+        m_pGameInstance->Start_SFX_Delay(_wstring(L"A_sfx_small_efforts-") + to_wstring(rand() % m_iSmallEffortsSfxCount), m_fAttackSfxDelay, m_fVocalSfxVolume);
+        m_pGameInstance->Start_SFX_Delay(_wstring(L"A_sfx_sword_strike2-") + to_wstring(rand() % m_iSwordStrike2SfxCount), m_fAttackSfxDelay, m_fSwordSfxVolume);
     }
     else if (2 == m_iComboCount)
     {
-        m_pGameInstance->Start_SFX_Delay(_wstring(L"A_sfx_jot_vocal_finalblow-") + to_wstring(rand() % iFinalBlowSfxCount), fAttackSfxDelay, fVocalSfxVolume);
-        m_pGameInstance->Start_SFX_Delay(_wstring(L"A_sfx_sword_strike3-") + to_wstring(rand() % iSwordStrike3SfxCount), fAttackSfxDelay, fSwordSfxVolume);
+        m_pGameInstance->Start_SFX_Delay(_wstring(L"A_sfx_jot_vocal_finalblow-") + to_wstring(rand() % m_iFinalBlowSfxCount), m_fAttackSfxDelay, m_fVocalSfxVolume);
+        m_pGameInstance->Start_SFX_Delay(_wstring(L"A_sfx_sword_strike3-") + to_wstring(rand() % m_iSwordStrike3SfxCount), m_fAttackSfxDelay, m_fSwordSfxVolume);
 
     }
 

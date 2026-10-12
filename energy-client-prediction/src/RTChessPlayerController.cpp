@@ -8,7 +8,6 @@
 
 constexpr ECollisionChannel BoardTraceChannel = ECollisionChannel::ECC_GameTraceChannel1;
 constexpr ECollisionChannel PieceTraceChannel = ECollisionChannel::ECC_GameTraceChannel2;
-constexpr float ClickMaxDragDistance = 100.f;
 
 void ARTChessPlayerController::OnSetTargetReleased()
 {

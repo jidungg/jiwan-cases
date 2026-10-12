@@ -28,6 +28,15 @@ private:
     //PlatformerMode 에서 사용
     _float m_f2DRisingForce = 200.f;
     _bool m_bRised = false;
+
+    _float m_fAttackSfxDelay = 0.15f;
+    _float m_fVocalSfxVolume = 25.f;
+    _float m_fSwordSfxVolume = 40.f;
+    _int m_iSmallEffortsSfxCount = 5;
+    _int m_iSwordSwingSfxCount = 5;
+    _int m_iSwordStrike2SfxCount = 6;
+    _int m_iSwordStrike3SfxCount = 6;
+    _int m_iFinalBlowSfxCount = 16;
 };
 
 END
