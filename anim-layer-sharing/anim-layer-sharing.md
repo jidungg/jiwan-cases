@@ -145,3 +145,19 @@ void UPieceAnimationControlComponent::ApplyAnimState()
 공격을 애님 상태에서 빼고 이동의 한 종류(`EMoveType`)로 옮겨, 상태 머신에 공격
 상태를 추가하는 대신 폰의 `MoveLayer`가 `IsAttacking` 값으로 이동·공격 시퀀스를
 고르게 했습니다.
+
+## 첨부 코드
+
+`src/`에 C++ 파일 사본을 두었습니다. RTChess 커밋 de09093에서 사례 관련 부분만
+발췌했습니다. 디버그 출력과 미사용 코드를 지우고 서식·상수·널 체크도 정리했습니다.
+
+- [ChessPieceAnimInstance.h](https://github.com/jidungg/jiwan-cases/blob/main/anim-layer-sharing/src/ChessPieceAnimInstance.h) — `UChessPieceAnimInstance` 선언
+- [ChessPieceAnimInstance.cpp](https://github.com/jidungg/jiwan-cases/blob/main/anim-layer-sharing/src/ChessPieceAnimInstance.cpp) — `UChessPieceAnimInstance` 구현 파일. 클래스가 변수 두 개뿐이라 내용이 없습니다
+- [PieceAnimationControlComponent.h](https://github.com/jidungg/jiwan-cases/blob/main/anim-layer-sharing/src/PieceAnimationControlComponent.h) — `UPieceAnimationControlComponent` 선언
+- [PieceAnimationControlComponent.cpp](https://github.com/jidungg/jiwan-cases/blob/main/anim-layer-sharing/src/PieceAnimationControlComponent.cpp) — `UPieceAnimationControlComponent` 구현
+- [KnightAnimationControlComponent.h](https://github.com/jidungg/jiwan-cases/blob/main/anim-layer-sharing/src/KnightAnimationControlComponent.h) — `UKnightAnimationControlComponent` 선언
+- [KnightAnimationControlComponent.cpp](https://github.com/jidungg/jiwan-cases/blob/main/anim-layer-sharing/src/KnightAnimationControlComponent.cpp) — `UKnightAnimationControlComponent` 구현
+- [PieceJumpMovementComponent.h](https://github.com/jidungg/jiwan-cases/blob/main/anim-layer-sharing/src/PieceJumpMovementComponent.h) — `UPieceJumpMovementComponent` 선언
+- [PieceJumpMovementComponent.cpp](https://github.com/jidungg/jiwan-cases/blob/main/anim-layer-sharing/src/PieceJumpMovementComponent.cpp) — `UPieceJumpMovementComponent` 구현
+
+`ABP_*`·`ALI_*` 블루프린트 에셋은 저장소의 `Content/RTChess/ABP/`에 있으며 동봉하지 않았습니다.

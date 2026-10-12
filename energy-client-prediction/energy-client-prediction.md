@@ -105,7 +105,7 @@ void ARTChessPlayerState::OnRep_Energy()
 `ConsumeEnergy`에서만 줄어듭니다. 클라이언트가 보낸 명령은 서버의 `CommandRPC`에서
 `IsLegalCommand`로 **한 번 더 검증**된 뒤에야 소비로 이어집니다.
 
-클라이언트 쪽 검사도 예측값을 씁니다. `HasEnuoughEnergy`는 클라이언트에서 표시값
+클라이언트 쪽 검사도 예측값을 씁니다. `HasEnoughEnergy`는 클라이언트에서 표시값
 기준으로 판정하기 때문에, 승인이 오기 전에 연달아 명령을 넣어 기력을 초과해서 쓰는
 것이 막힙니다.
 
@@ -164,3 +164,13 @@ Reliable로 보내면 순서 보장 큐를 계속 쓰게 됩니다. **초당 1�
 
 선택한 방식이 대신 감수한 것은 **클라이언트가 예측·정산 상태를 들고 있어야 한다**는
 점입니다. 위 단점에 적은 거절 처리 같은 예외도 여기서 나옵니다.
+
+## 첨부 코드
+
+`src/`에 구현 파일 사본을 두었습니다. RTChess 커밋 de09093에서 사례 관련 부분만
+발췌했습니다. 디버그 출력과 미사용 코드를 지우고 서식·상수·널 체크도 정리했습니다.
+
+- [RTChessPlayerState.h](https://github.com/jidungg/jiwan-cases/blob/main/energy-client-prediction/src/RTChessPlayerState.h) — `ARTChessPlayerState`·`FEnergySync` 선언
+- [RTChessPlayerState.cpp](https://github.com/jidungg/jiwan-cases/blob/main/energy-client-prediction/src/RTChessPlayerState.cpp) — `OnRep_Energy`·`ApplyLocalPredictedConsumeEnergy`·`ConsumeEnergy` 등 구현
+- [RTChessPlayerController.h](https://github.com/jidungg/jiwan-cases/blob/main/energy-client-prediction/src/RTChessPlayerController.h) — `ARTChessPlayerController` 선언
+- [RTChessPlayerController.cpp](https://github.com/jidungg/jiwan-cases/blob/main/energy-client-prediction/src/RTChessPlayerController.cpp) — 입력 처리 `OnSetTargetReleased`와 `CommandRPC`·`IsLegalCommand` 구현

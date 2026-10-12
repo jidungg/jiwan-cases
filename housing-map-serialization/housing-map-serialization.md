@@ -247,3 +247,21 @@ for (auto& pairBuildItemData : m_mapItem[(_uint)ITEM_TYPE::BUILD])
 찍다 보니 어떤 아이템은 너무 작게 나오고 어떤 아이템은 촬영 범위를 넘어가는 문제가
 있었는데, 아이템별로 카메라 거리와 각도를 잡아서 찍고 결과를 파일로 저장하는 툴이
 있었으면 그 문제까지 같이 해결됐을 것입니다.
+
+## 첨부 코드
+
+`src/`에 구현 파일 사본을 두었습니다. CopyMaple2 커밋 61a4c3f에서 사례 관련 부분만
+발췌했습니다. 디버그 출력과 미사용 코드를 지우고 서식·상수·널 체크도 정리했습니다.
+
+- [Terrain.h](https://github.com/jidungg/jiwan-cases/blob/main/housing-map-serialization/src/Terrain.h) — `CTerrain` 선언
+- [Terrain.cpp](https://github.com/jidungg/jiwan-cases/blob/main/housing-map-serialization/src/Terrain.cpp) — `CTerrain::Save_To_Json`·`Load_From_Json`과 배치·인덱스 변환 구현
+- [Builder.h](https://github.com/jidungg/jiwan-cases/blob/main/housing-map-serialization/src/Builder.h) — `CBuilder` 선언
+- [Builder.cpp](https://github.com/jidungg/jiwan-cases/blob/main/housing-map-serialization/src/Builder.cpp) — `CBuilder` 구현
+- [BuildPreview.h](https://github.com/jidungg/jiwan-cases/blob/main/housing-map-serialization/src/BuildPreview.h) — `CBuildPreview` 선언
+- [BuildPreview.cpp](https://github.com/jidungg/jiwan-cases/blob/main/housing-map-serialization/src/BuildPreview.cpp) — `CBuildPreview::Compute_Matrix` 구현
+- [ItemDataBase.h](https://github.com/jidungg/jiwan-cases/blob/main/housing-map-serialization/src/ItemDataBase.h) — `CItemDataBase` 선언
+- [ItemDataBase.cpp](https://github.com/jidungg/jiwan-cases/blob/main/housing-map-serialization/src/ItemDataBase.cpp) — `CItemDataBase` 구현
+- [UIHomeDialog.h](https://github.com/jidungg/jiwan-cases/blob/main/housing-map-serialization/src/UIHomeDialog.h) — `CUIHomeDialog` 선언
+- [UIHomeDialog.cpp](https://github.com/jidungg/jiwan-cases/blob/main/housing-map-serialization/src/UIHomeDialog.cpp) — `CUIHomeDialog` 구현
+- [Level_Home.h](https://github.com/jidungg/jiwan-cases/blob/main/housing-map-serialization/src/Level_Home.h) — `CLevel_Home` 선언
+- [Level_Home.cpp](https://github.com/jidungg/jiwan-cases/blob/main/housing-map-serialization/src/Level_Home.cpp) — `CLevel_Home` 구현

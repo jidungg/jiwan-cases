@@ -218,3 +218,22 @@ Bind_Condition(pTransition, MON_ANIM_CONDITION::AC_STUN, CONDITION_TYPE::EQUAL, 
 **네 가지 모두 이 프로젝트에서는 적용하지 못했습니다.** 개발 기간 중에 상태 구조를
 갈아엎는 변경이라 손대지 못한 채로 끝났고, 위 정리는 다음에 같은 것을 만들 때를
 위한 것이었습니다.
+
+## 첨부 코드
+
+`src/`에 구현 파일 사본을 두었습니다. 2026-10-12 로컬 작업 트리에서 사례 관련 부분만
+발췌했습니다. 디버그 출력과 미사용 코드를 지우고 서식·상수·널 체크도 정리했습니다.
+팀 저장소에서 본인이 작성한 파일만 동봉했고, 파생 상태 36개 중 대표 3개만 넣었습니다.
+
+- [StateMachine.h](https://github.com/jidungg/jiwan-cases/blob/main/player-state-machine/src/StateMachine.h) — `CStateMachine` 선언
+- [StateMachine.cpp](https://github.com/jidungg/jiwan-cases/blob/main/player-state-machine/src/StateMachine.cpp) — `Update`·`Transition_To` 구현
+- [PlayerState.h](https://github.com/jidungg/jiwan-cases/blob/main/player-state-machine/src/PlayerState.h) — `CPlayerState` 기반 클래스 선언
+- [PlayerState.cpp](https://github.com/jidungg/jiwan-cases/blob/main/player-state-machine/src/PlayerState.cpp) — `CPlayerState` 생성자와 `Free`
+- [PlayerState_Idle.h](https://github.com/jidungg/jiwan-cases/blob/main/player-state-machine/src/PlayerState_Idle.h) — `CPlayerState_Idle` 선언
+- [PlayerState_Idle.cpp](https://github.com/jidungg/jiwan-cases/blob/main/player-state-machine/src/PlayerState_Idle.cpp) — `CPlayerState_Idle` 구현
+- [PlayerState_Run.h](https://github.com/jidungg/jiwan-cases/blob/main/player-state-machine/src/PlayerState_Run.h) — `CPlayerState_Run` 선언
+- [PlayerState_Run.cpp](https://github.com/jidungg/jiwan-cases/blob/main/player-state-machine/src/PlayerState_Run.cpp) — `CPlayerState_Run` 구현
+- [PlayerState_Attack.h](https://github.com/jidungg/jiwan-cases/blob/main/player-state-machine/src/PlayerState_Attack.h) — `CPlayerState_Attack` 선언
+- [PlayerState_Attack.cpp](https://github.com/jidungg/jiwan-cases/blob/main/player-state-machine/src/PlayerState_Attack.cpp) — `CPlayerState_Attack` 구현
+
+`CPlayer::Set_State`는 `Client/Private/Player.cpp`에 있으며, 팀원 수정이 섞인 파일이라 동봉하지 않았습니다.

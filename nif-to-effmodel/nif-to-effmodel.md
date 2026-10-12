@@ -92,7 +92,7 @@ void MakeControllerList(NifModel* nifModel)
 옮긴 컨트롤러는 이 5종입니다. **FBX 경로를 버리게 만든 UV 애니메이션
 (`NiTextureTransformController`)과 알파 애니메이션(`NiAlphaController`)이
 여기서 살아났습니다.** 각각 `ControllerData`를 상속한 구조체가 키프레임을 읽어 써내고,
-게임 쪽에서는 `CEffTransformController`·`CEffTextureTransfromController`·
+게임 쪽에서는 `CEffTransformController`·`CEffTextureTransformController`·
 `CEffAlphaController`·`CEffMaterialColorController`·`CEffFlipController`가 받습니다.
 
 메시는 위치·노멀·UV·탄젠트와 인덱스 버퍼, 스킨용 본 가중치, 그리고 머티리얼·텍스처링
@@ -149,3 +149,21 @@ export 버튼을 추가하는 방식으로 하고 싶습니다.
 그리고 **제대로 가져오지 못했던 데이터와 기능들을 더 자세히 분석해서 구현해보고
 싶습니다.** 시간에 여유가 있다면 각종 옵션 비트 플래그를 완전히 해석하고, Quadratic Key 보간
 같은 추가하지 못한 기능들도 구현해 원작과 똑같은 이펙트를 만들고 싶습니다.
+
+## 첨부 코드
+
+`src/`에 구현 파일 사본을 두었습니다. NifSkope 개조본은 로컬 작업본(git 없음),
+CopyMaple2는 커밋 61a4c3f 기준입니다.
+사례 관련 부분만 발췌했습니다. 디버그 출력과 미사용 코드를 지우고 서식·상수·널 체크도 정리했습니다.
+
+- [niftobinary.h](https://github.com/jidungg/jiwan-cases/blob/main/nif-to-effmodel/src/niftobinary.h) — NifSkope에 추가한 익스포터 선언
+- [niftobinary.cpp](https://github.com/jidungg/jiwan-cases/blob/main/nif-to-effmodel/src/niftobinary.cpp) — `Make*List`·`Export*` 함수군 구현
+- [EffModel.h](https://github.com/jidungg/jiwan-cases/blob/main/nif-to-effmodel/src/EffModel.h) — `CEffModel` 선언
+- [EffModel.cpp](https://github.com/jidungg/jiwan-cases/blob/main/nif-to-effmodel/src/EffModel.cpp) — `CEffModel::Initialize_Prototype`·`Ready_Bones`~`Ready_Controls` 구현
+- [EffConcreteController.h](https://github.com/jidungg/jiwan-cases/blob/main/nif-to-effmodel/src/EffConcreteController.h) — `CEffTransformController`·`CEffTextureTransformController`·`CEffAlphaController`·`CEffMaterialColorController` 선언
+- [EffConcreteController.cpp](https://github.com/jidungg/jiwan-cases/blob/main/nif-to-effmodel/src/EffConcreteController.cpp) — 위 컨트롤러 4종의 읽기·갱신 구현
+- [EffFlipController.h](https://github.com/jidungg/jiwan-cases/blob/main/nif-to-effmodel/src/EffFlipController.h) — `CEffFlipController` 선언
+- [EffFlipController.cpp](https://github.com/jidungg/jiwan-cases/blob/main/nif-to-effmodel/src/EffFlipController.cpp) — `CEffFlipController` 읽기·갱신 구현
+
+`NifSkope::load()` 후킹은 업스트림 파일 `src/nifskope.cpp`에, `CLoader::Load_Dirctory_EffModels`는
+CopyMaple2 `Client/Private/Loader.cpp`에 있으며 동봉하지 않았습니다.

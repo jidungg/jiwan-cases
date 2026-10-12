@@ -219,3 +219,30 @@ Notion으로 팀에 공유했습니다.
 
 그러나 상체·하체 분리 애니메이션 기능이 필요했음에도 프로젝트 기간 압박 때문에 구현하지 못한 것이 가장 아쉽습니다. 다시 만든다면 이
 기능을 반드시 넣고 싶습니다. 또한 애니메이션 전환 방식도 크로스페이드를 옵션으로 고를 수 있게 하고 싶습니다.
+
+## 첨부 코드
+
+`src/`에 구현 파일 사본을 두었습니다. 2026-10-12 로컬 작업 트리에서 사례 관련 부분만
+발췌했습니다. 디버그 출력과 미사용 코드를 지우고 서식·상수·널 체크도 정리했습니다.
+팀 저장소에서 본인이 작성한 파일만 동봉했습니다.
+
+- [Animation.h](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/Animation.h) — `CAnimation` 선언
+- [Animation.cpp](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/Animation.cpp) — `CAnimation::Reset` 구현
+- [Animation3D.h](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/Animation3D.h) — `CAnimation3D` 선언
+- [Animation3D.cpp](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/Animation3D.cpp) — 키프레임 보간·전환 보간 구현
+- [Channel.h](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/Channel.h) — `CChannel` 선언
+- [Channel.cpp](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/Channel.cpp) — `CChannel` 구현
+- [3DModel.h](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/3DModel.h) — `C3DModel` 선언
+- [3DModel.cpp](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/3DModel.cpp) — `Play_Animation`·`Switch_Animation` 구현. 학원 템플릿을 바탕으로 수정한 파일입니다
+- [Animation2D.h](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/Animation2D.h) — `CAnimation2D`·`CSpriteFrame` 선언
+- [Animation2D.cpp](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/Animation2D.cpp) — `CAnimation2D` 구현
+- [2DModel.h](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/2DModel.h) — `C2DModel` 선언
+- [2DModel.cpp](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/2DModel.cpp) — `C2DModel` 구현
+- [Controller_Model.h](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/Controller_Model.h) — `CController_Model` 선언
+- [Controller_Model.cpp](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/Controller_Model.cpp) — `CController_Model` 구현
+- [FBXToBinary.h](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/FBXToBinary.h) — FBX → 엔진 포맷 변환기 선언
+- [FBXToBinary.cpp](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/FBXToBinary.cpp) — FBX → 엔진 포맷 변환기 구현
+- [ToolAnimation2D.h](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/ToolAnimation2D.h) — 애니메이션 툴의 2D 편집 클래스 선언
+- [ToolAnimation2D.cpp](https://github.com/jidungg/jiwan-cases/blob/main/skeletal-animation-system/src/ToolAnimation2D.cpp) — 애니메이션 툴의 2D 편집 클래스 구현
+
+`CBone`(`Bone.h`/`.cpp`)과 `Shader_VtxPosTex.hlsl`은 git 기록상 다른 팀원 커밋이 대부분이라 동봉하지 않았습니다.
