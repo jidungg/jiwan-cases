@@ -10,14 +10,6 @@
 #include "BuildPreview.h"
 #include "EffModelObject.h"
 
-namespace
-{
-	constexpr _float fObjectRotationPerSec = 5.f;
-	constexpr _float fObjectSpeedPerSec = 1.f;
-	constexpr _uint iInitialPreviewItemID = 0;
-	constexpr _tchar szBirdModelProtoName[] = TEXT("60100001_chocoduckyball.model");
-}
-
 HRESULT CBuilder::Initialize(void* pArg)
 {
 	if (FAILED(__super::Initialize(pArg)))
@@ -28,7 +20,7 @@ HRESULT CBuilder::Initialize(void* pArg)
 	if (FAILED(Ready_Builder()))
 		return E_FAIL;
 
-	if (FAILED(Ready_Preview(static_cast<BUILD_ITEM_DATA*>(ITEMDB->Get_Data(ITEM_TYPE::BUILD, iInitialPreviewItemID)))))
+	if (FAILED(Ready_Preview(static_cast<BUILD_ITEM_DATA*>(ITEMDB->Get_Data(ITEM_TYPE::BUILD, m_iInitialPreviewItemID)))))
 		return E_FAIL;
 
 	if (FAILED(Ready_Marker()))
@@ -39,10 +31,10 @@ HRESULT CBuilder::Ready_Builder()
 {
 	//DuckyBall
 	CModelObject::MODELOBJ_DESC tModelDesc;
-	tModelDesc.fRotationPerSec = fObjectRotationPerSec;
-	tModelDesc.fSpeedPerSec = fObjectSpeedPerSec;
+	tModelDesc.fRotationPerSec = m_fObjectRotationPerSec;
+	tModelDesc.fSpeedPerSec = m_fObjectSpeedPerSec;
 	tModelDesc.eModelProtoLevelID = LEVEL_HOME;
-	lstrcpyW(tModelDesc.szModelProtoName, szBirdModelProtoName);
+	lstrcpyW(tModelDesc.szModelProtoName, m_szBirdModelProtoName);
 	m_pBird = static_cast<CModelObject*>(m_pGameInstance->Clone_Proto_Object_Stock(CModelObject::m_szProtoTag, &tModelDesc));
 	if (nullptr == m_pBird)
 		return E_FAIL;
@@ -57,8 +49,8 @@ HRESULT CBuilder::Ready_Preview(BUILD_ITEM_DATA* pDesc)
 	if (nullptr == pDesc)
 		return E_FAIL;
 	CTerrainObject::TERRAINOBJ_DESC tTerrObjDesc;
-	tTerrObjDesc.fRotationPerSec = fObjectRotationPerSec;
-	tTerrObjDesc.fSpeedPerSec = fObjectSpeedPerSec;
+	tTerrObjDesc.fRotationPerSec = m_fObjectRotationPerSec;
+	tTerrObjDesc.fSpeedPerSec = m_fObjectSpeedPerSec;
 	tTerrObjDesc.iID =pDesc->iItemID;
 	tTerrObjDesc.eModelProtoLevelID = LEVEL_LOADING;
 	lstrcpyW(tTerrObjDesc.szModelProtoName, pDesc->strModelTag);
@@ -69,7 +61,7 @@ HRESULT CBuilder::Ready_Preview(BUILD_ITEM_DATA* pDesc)
 		return E_FAIL;
 	Add_Child(m_pPreview);
 	m_pPreview->Get_Transform()->Set_State(CTransform::STATE_POSITION, m_vPreviewOffset);
-	m_pPreview->Get_Transform()->Scaling(0.5f, 0.5f, 0.5f);
+	m_pPreview->Get_Transform()->Scaling(m_vPreviewScale.x, m_vPreviewScale.y, m_vPreviewScale.z);
 	return S_OK;
 }
 
@@ -129,7 +121,7 @@ void CBuilder::Receive_KeyInput(_float fTimeDelta)
 	vPos = m_pTransformCom->Get_State(CTransform::STATE_POSITION);
 	_uint iIndex = m_pCubeTerrain->PosToIndex(vPos);
 	m_bBuildable = m_pCubeTerrain->Is_Buildable(vPos);
-	if (m_pGameInstance->GetKeyState(KEY::R) == KEY_STATE::DOWN)//ȸ��
+	if (m_pGameInstance->GetKeyState(KEY::R) == KEY_STATE::DOWN)
 	{
 		CTerrainObject* pTerrObj = m_pCubeTerrain->Get_TerrainObject(iIndex);
 		if (pTerrObj)
@@ -137,21 +129,21 @@ void CBuilder::Receive_KeyInput(_float fTimeDelta)
 		else
 			m_pPreview->Rotate();
 	}
-	if (m_pGameInstance->GetKeyState(KEY::E) == KEY_STATE::DOWN) // ȸ��
+	if (m_pGameInstance->GetKeyState(KEY::E) == KEY_STATE::DOWN) 
 	{
 
 		m_pCubeTerrain->Remove_TerrainObject(iIndex);
 
 	}
-	if (m_bBuildable && m_pGameInstance->GetKeyState(KEY::SPACE) == KEY_STATE::PRESSING) // ��ġ
+	if (m_bBuildable && m_pGameInstance->GetKeyState(KEY::SPACE) == KEY_STATE::PRESSING)
 	{
 		BUILD_ITEM_DATA* itemdesc =static_cast<BUILD_ITEM_DATA*>(ITEMDB->Get_Data(ITEM_TYPE::BUILD, (_uint)m_pPreview->Get_BuildItemID()));
 		if (nullptr == itemdesc)
 			return;
 
 		CTerrainObject::TERRAINOBJ_DESC desc;
-		desc.fRotationPerSec = fObjectRotationPerSec;
-		desc.fSpeedPerSec = fObjectSpeedPerSec;
+		desc.fRotationPerSec = m_fObjectRotationPerSec;
+		desc.fSpeedPerSec = m_fObjectSpeedPerSec;
 		desc.iID = m_pPreview->Get_BuildItemID();
 		desc.eModelProtoLevelID = LEVEL_LOADING;
 		lstrcpyW(desc.szModelProtoName, itemdesc->strModelTag);

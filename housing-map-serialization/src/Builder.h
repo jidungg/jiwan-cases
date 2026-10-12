@@ -37,11 +37,17 @@ private:
 private:
 	CTerrain* m_pCubeTerrain = { nullptr };
 
+	_float m_fObjectRotationPerSec = 5.f;
+	_float m_fObjectSpeedPerSec = 1.f;
+
 	CModelObject* m_pBird = { nullptr };
 	XMVECTOR m_vBirdOffset = XMVectorSet(0, 1, 0, 1);
+	static constexpr _tchar m_szBirdModelProtoName[] = L"60100001_chocoduckyball.model";
 
 	CBuildPreview* m_pPreview = { nullptr };
 	XMVECTOR m_vPreviewOffset = XMVectorSet(0, 0.5f, 0, 1);
+	_float3 m_vPreviewScale = { 0.5f, 0.5f, 0.5f };
+	_uint m_iInitialPreviewItemID = 0;
 	_int m_iBuildData = 0;
 	_float m_fBuildData = 5.f;
 	_float m_fBuildDataDelta = 0.1f;
