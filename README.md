@@ -72,7 +72,7 @@ Dogong과 Project\_DX11\_PluckySquire는 팀 프로젝트입니다. 아래 목�
 ### CopyMaple2 — 메이플스토리2 모작
 
 * [그리드 큐브맵 Raycast에 3D DDA 도입](raycast-3d-dda/raycast-3d-dda.md)
-— 전체 셀 순회 대비 평균 실행 시간을 14.9μs에서 0.2μs로 줄였습니다.
+— 전체 셀 순회 대비 평균 실행 시간을 2.74μs에서 0.06μs로 줄였습니다.
 * [하우징(건축) 시스템](housing-map-serialization/housing-map-serialization.md)
 — 그리드 큐브맵 위에 블록을 배치하는 UGC 하우징을 만들고 그 건설 모드를 게임 맵
 제작 툴로도 썼습니다. 연속 블록 압축으로 맵 저장 객체를 65% 줄였습니다.
